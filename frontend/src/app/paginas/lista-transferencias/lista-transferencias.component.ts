@@ -29,7 +29,7 @@ export class ListaTransferenciasComponent implements OnInit {
   }
 
   cancelarTransferencia(id: number): void {
-    const confirmacao = window.confirm('Tem certeza que cancelar o agendamento?');
+    const confirmacao = window.confirm('Tem certeza que deseja cancelar o agendamento?');
     if (confirmacao) {
       this.transferenciaService.cancelarAgendamento(id).subscribe({
         next: () => {

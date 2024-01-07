@@ -1,62 +1,47 @@
-# Entregáveis
- Pequena documentação no README explicando suas decisões arquiteturais, versões de linguagem,
-ferramentas utilizadas e instruções para a subida do projeto.
+# Sistema de Agendamento de Transferências Financeiras
+Projeto de envio para avaliação da empresa Tokio Marine, a proposta é criar uma API em Java, juntamente com uma interface web em Angula, para realizar agendamentos de transferências financeiras, de acordo com a proposta apresentada pela empresa: <b>[Avaliação Fullstack](TM-Avaliacao.md)</b>.
 
- É obrigatório a criação de um projeto no seu Github para que vejamos os passos feitos
-através dos commits.
-
-# Avaliação
-
-Desenvolver tanto a API quanto o front-end (Spring boot e Vue no front, caso não tenha conhecimentos de vue, aceitamos o front com angular)
-
-O objetivo dessa tarefa é avaliar como você vai desenvolver o código em termos de estilo,
-eficiência, qualidade e prazo de entrega.
-
-A tarefa é a seguinte:
-
-Desenvolver um sistema de agendamento de transferências financeiras.
-
-1) O usuário deve poder agendar uma transferência financeira com as seguintes
- informações:
- Conta de origem (padrão XXXXXX)
- Conta de destino (padrão XXXXXX)
- Valor da transferência
- Taxa (a ser calculada)
- Data da transferência (data que será realizada a transferência)
- Data de agendamento (hoje)
- 
-2) Cada tipo de transação segue uma regra diferente para cálculo da taxa
-
- A: Tranferências no mesmo dia do agendamento tem uma taxa de $3 mais 3% do valor a
-ser transferido;
-
-B: Tranferências até 10 dias da data de agendamento possuem uma taxa de $12.
-
-C: Operações do tipo C tem uma taxa regressiva conforme a data de
-transferência:
-
- acima de 10 dias da data de agendamento 8.2%
- 
- acima de 20 dias da data de agendamento 6.9%
- 
- acima de 30 dias da data de agendamento 4.7%
- 
- acima de 40 dias da data de agendamento 1.7%
- 
- D: Operações do tipo D tem a taxa igual a A, B ou C dependendo do valor da
-transferência.
-
- Valores até $1.000 seguem a taxação tipo A
- 
- Valores de $1.001 até $2.000 seguem a taxação tipo B
- 
- Valores maiores que $2.000 seguem a taxação tipo C
- 
-Obs: Caso não haja taxa aplicável, lançar um alerta sobre o erro.
-
-3) O usuário deve poder ver todos os agendamentos cadastrados.
-
-Nota: A persistência deve ser feita em banco de dados em memória (h2, por exemplo).
-Boa sorte!
+### 💻 Tecnologias e Software utilizadas
+![](https://img.shields.io/static/v1?label=Java&message=JDK17&labelColor=white&style=for-the-badge)
+![](https://img.shields.io/static/v1?label=Database&message=h2&labelColor=white&style=for-the-badge)
+![](https://img.shields.io/static/v1?label=Maven&message=v3.2.1&labelColor=white&style=for-the-badge)
+![](https://img.shields.io/static/v1?label=Angular&message=v16.2.0&labelColor=white&style=for-the-badge)
 
 
+![](https://img.shields.io/badge/-Spring-5382a1?logo=spring&logoColor=white&style=for-the-badge)
+![](https://img.shields.io/badge/-Postman-5382a1?logo=postman&logoColor=white&style=for-the-badge)
+![](https://img.shields.io/badge/-VSCode-5382a1?logo=visualstudio&logoColor=white&style=for-the-badge)
+
+![Alt text](sistema-transferencia.gif)
+
+### Requisições
+- <b>POST:</b> url/transferencias/agendar: realizará o cadastro de agendamento de transferência financeiro.
+- <b>GET:</b> url/transferencias/agendamentos: Retorna uma lista de todos os agendamentos cadastrados
+- <b>DELETE:</b> url/transferencias/agendamentos/{id}: Deleta o agendamento realizado.
+
+```json
+
+{
+    "contaOrigem": 635241,
+    "contaDestino": 784512,
+    "valorTransferencia": 650,
+    "dataTransferencia": "2024-02-25"
+}
+
+```
+
+### Retorno
+```json
+
+{
+    "id": 1,
+    "contaOrigem": 635241,
+    "contaDestino": 784512,
+    "valorTransferencia": 650,
+    "taxa": 11.050,
+    "dataTransferencia": "2024-02-25",
+    "dataAgendamento": "2024-01-07",
+    "valorTotal": 661.050
+}
+
+```
