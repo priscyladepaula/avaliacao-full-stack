@@ -1,0 +1,49 @@
+<div class="transferencia-content">
+    <h1>Nova Transferência</h1>
+
+    <form [formGroup]="formulario">
+        <div class="form-field">
+            <label for="contaOrigem">Conta Origem:</label>
+            <input type="number" id="contaOrigem" formControlName="contaOrigem"
+                placeholder="XXXXXX" required>
+        </div>
+        <div class="form-field">
+            <label for="contaDestino">Conta Destino:</label>
+            <input type="number" id="contaDestino"
+                formControlName="contaDestino" placeholder="XXXXXX" required>
+        </div>
+        <div class="form-field">
+            <label for="valorTransferencia">Valor:</label>
+            <div class="valor-container">
+                <span class="moeda">R$</span>
+                <input class="valor-input" type="number" id="valorTransferencia"
+                    formControlName="valorTransferencia" min="0"
+                    placeholder="0,00" required>
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="dataTransferencia">Data de Transferência:</label>
+            <input type="date" id="dataTransferencia"
+                formControlName="dataTransferencia"
+                [min]="desabilitarDatasAnteriores()" required>
+        </div>
+
+        <a class="clean-form" (click)="limparFormulario()">Limpar
+            formulário</a><br>
+    </form>
+
+    <button class="revisar" (click)="revisarTransferencia()"
+        [disabled]="showPopup">Revisar
+        Informações</button>
+
+    <button class="voltar" [routerLink]="['/home-page']"
+        [disabled]="showPopup">Voltar à
+        página
+        inicial</button>
+
+    <app-popup *ngIf="showPopup" [dadosTransferencia]="transferencia"
+        [calculoTaxa]="calculoTaxa"
+        (confirmarCadastro)="confirmarCadastro()"
+        (fecharPopup)="closePopup()"></app-popup>
+
+</div>

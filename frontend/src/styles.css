@@ -1,0 +1,5 @@
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(230deg, rgba(139,223,145,1) 0%, rgb(74, 128, 78) 100%);
+}
