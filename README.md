@@ -1,5 +1,5 @@
 # Sistema de Agendamento de Transferências Financeiras
-Projeto de envio para avaliação da empresa Tokio Marine, a proposta é criar uma API em Java, juntamente com uma interface web em Angula, para realizar agendamentos de transferências financeiras, de acordo com a proposta apresentada pela empresa: <b>[Avaliação Fullstack](TM-Avaliacao.md)</b>.
+Projeto de envio para avaliação da empresa Tokio Marine, a proposta é criar uma API em Java, juntamente com uma interface web em Angular, para realizar agendamentos de transferências financeiras, de acordo com a proposta apresentada pela empresa: <b>[Avaliação Fullstack](TM-Avaliacao.md)</b>.
 
 ### 💻 Tecnologias e Software utilizadas
 ![](https://img.shields.io/static/v1?label=Java&message=JDK17&labelColor=white&style=for-the-badge)
