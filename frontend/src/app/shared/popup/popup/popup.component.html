@@ -1,0 +1,30 @@
+<div class="popup">
+  <h2>Revise os Dados</h2>
+  <div class="popup-content">
+    <div class="form-field">
+      <p>Conta origem: {{ dadosTransferencia.contaOrigem }}</p>
+    </div>
+    <div class="form-field">
+      <p>Conta destino: {{ dadosTransferencia.contaDestino }}</p>
+    </div>
+    <div class="form-field">
+      <p>Data agendada: {{ dadosTransferencia.dataTransferencia |
+        date:'dd/MM/yyyy' }}</p>
+    </div>
+    <div class="form-field">
+      <p>Valor da transferência: {{ dadosTransferencia.valorTransferencia |
+      currency:'BRL':'symbol':'1.2-2' }}</p>
+    </div>
+    <div class="form-field">
+      <p *ngIf="calculoTaxa">Taxa: {{ calculoTaxa.taxa | number:'1.2-2' }}</p>
+    </div>
+    <div class="form-field">
+      <p *ngIf="calculoTaxa">Valor Total: {{ calculoTaxa.valorTotal |
+      currency:'BRL':'symbol':'1.2-2' }}</p>
+    </div>
+    
+    <button (click)="confirmar()">Agendar</button>
+    <button (click)="fechar()">Voltar</button>
+
+  </div>
+</div>

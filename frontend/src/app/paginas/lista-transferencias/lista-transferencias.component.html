@@ -1,0 +1,27 @@
+<div class="lista-container">
+    <h1>Transferências Agendadas</h1>
+    <button [routerLink]="['/home-page']">Voltar à página inicial</button>
+    <div class="transf-grid">
+        <div class="listaTransferencias"
+            *ngFor="let transferencia of listaTransferencias">
+            <div class="info-transferencias">
+                <div class="form-field">Conta Origem: {{
+                    transferencia.contaOrigem }}</div>
+                <div class="form-field">Conta Destino: {{
+                    transferencia.contaDestino }}</div>
+                <div class="form-field">Valor da Transferência: {{
+                    transferencia.valorTransferencia |
+                    currency:'BRL':'symbol':'1.2-2' }}</div>
+                <div class="form-field">Data Agendada: {{
+                    transferencia.dataTransferencia | date:'dd/MM/yyyy' }}</div>
+                <div class="form-field">Taxa: {{ transferencia.taxa |
+                    currency:'BRL':'symbol':'1.2-2' }}</div>
+                <div class="form-field">Valor Total: {{ transferencia.valorTotal
+                    | currency:'BRL':'symbol':'1.2-2' }}</div>
+                <button
+                    (click)="cancelarTransferencia(transferencia.id)">Cancelar
+                    agendamento</button>
+            </div>
+        </div>
+    </div>
+</div>
